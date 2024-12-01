@@ -1,14 +1,14 @@
 
 'use client'
 
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "../styles/index.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from 'next/navigation';
 import { menuDash } from "@/data";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Poppins({ weight:['400','600','700'],display:'swap',subsets: ["latin"] });
 
 
 export default function RootLayout({

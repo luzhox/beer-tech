@@ -1,57 +1,112 @@
-.beer-order{
+.beer-order {
 
-  &__item{
+  &__item {
     display: flex;
     padding: 16px;
     border-bottom: 1px solid #eff1f9;
     justify-content: space-between;
     align-items: center;
-    &__data{
+
+    &__data {
       width: 100%;
       max-width: calc(100% / 6);
       text-align: center;
-      &:first-child{
+
+      p {
+        color: #32374a;
+        font-weight: 400;
+      }
+
+      &:first-child {
         text-align: left;
       }
-      &:last-child{
+
+      &:last-child {
         margin-right: 0px;
         text-align: right;
       }
-      &.user{
+
+      &.user {
         min-width: 120px;
       }
-      &.round{
+
+      &.round {
         display: flex;
         flex-flow: column;
-        button{
+
+        button {
           margin-top: 8px;
           color: #538bcc;
           text-decoration: underline;
         }
       }
-      &.status{
-  
-        p{
+
+      &.status {
+
+        p {
           min-width: 80px;
           padding: 6px;
           border-radius: 8px;
           background: rgb(236, 240, 255);
         }
-        &.green{
-          p{
+
+        &.green {
+          p {
             background: white;
-           border:1px solid rgb(79, 172, 79);
+            border: 1px solid rgb(79, 172, 79);
             color: rgb(79, 172, 79);
           }
         }
       }
     }
-    
-    &:last-child{
+
+    &:last-child {
       border-bottom: none;
     }
-    &:hover{
+
+    &:hover {
       background: #eff1f9;
+    }
+  }
+}
+
+.order {
+  &-data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0px;
+    border-bottom: 1px solid #eff1f9;
+
+    h4 {
+      font-weight: 400;
+
+      strong {
+        font-weight: 600;
+      }
+    }
+
+    &:last-child {
+      border-bottom: none;
+      border-top: 2px solid #141723;
+    }
+  }
+
+  &-round {
+    &__item {
+      padding: 16px;
+      border-bottom: 1px solid #eff1f9;
+
+      h4 {
+        font-weight: 400;
+      }
+
+      ul {
+        li {
+          list-style: initial;
+          margin-left: 12px;
+        }
+      }
     }
   }
 }

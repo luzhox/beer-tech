@@ -11,7 +11,16 @@
     font-style: 32px;
     margin-bottom: 24px;
   }
+  &-content{
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between
+  }
   &-table{
     @extend .props-dash;
+  }
+  &-cards{
+    @extend .props-dash;
+    width: calc(50% - 12px);
   }
 }

@@ -1,6 +1,7 @@
 import { Table } from "@/components/Table";
 import { headersStock } from "@/data";
 import { StockItem } from "@/interfaces/stock";
+import { formatDate } from "@/utils/format";
 
 const getStocks = async () => {
   return  await fetch('https://beer-backend-1.onrender.com/api/v1/stock')
@@ -12,10 +13,7 @@ const getStocks = async () => {
 
 export default async function Home() {
   const data = await getStocks();
-  const formatDate = (date:string) => {
-    const newDate = new Date(date);
-    return newDate.toLocaleDateString();
-  }
+
 
   return (
     <div className="stock">

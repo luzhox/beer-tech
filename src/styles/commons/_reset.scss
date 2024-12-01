@@ -9,6 +9,18 @@
   background: transparent;
   border: 0px;
   outline: 0;
+  font-family: 'Poppins', sans-serif;
+  text-rendering: geometricPrecision;
+}
+h1,h2,h3,h4,h5,h6{
+  font-weight: 700;
+}
+.group{
+  display: flex;
+  align-items: center;
+}
+.backButton{
+  margin-right: 24px;
 }
 button{
   margin-top: 8px;

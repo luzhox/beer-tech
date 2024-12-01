@@ -1,11 +1,11 @@
-/* eslint-disable react/jsx-key */
 
 
+import Modal from "@/components/Modal";
 import { Table } from "@/components/Table";
 import { headersOrder } from "@/data";
 import { Order } from "@/interfaces/order";
 import  { Metadata } from "next";
-import Link from "next/link";
+import { useState } from "react";
 
 export const metadata: Metadata = {
   title: 'Ordenes de bebidas - Beer System',
@@ -54,21 +54,14 @@ export default async function Home() {
         
 
         return (
-          <Link key={order.id+order.user_id} href={`/order/${order.user_id}`} style={{color:'black'}}><div  className="beer-order__item">
+        <div key={order.id+order.user_id} className="beer-order__item">
           <div className="beer-order__item__data user">{order.user_name}</div>
-          <div className="beer-order__item__data round"><p>{order.rounds.length} rondas</p></div>
+          <div className="beer-order__item__data round"><p>{order.rounds.length} rondas</p><button>Ver detalle</button></div>
           <div className="beer-order__item__data created"><p>{obtainDayWithMonthAndYear}</p><p>{obtainHour}</p></div>
           <div className={`beer-order__item__data status ${order.paid?'green':'default'}`}><p>{order.paid?'Pagado':'Pendiente'}</p></div>
-          <div className="beer-order__item__data count"><p>{obtainNumberDrinks}</p></div>
-          <div className="beer-order__item__data amount">${order.total.toFixed(2)}
-        
-            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 12.333H20M20 12.333L14.375 6.33301M20 12.333L14.375 18.333" stroke="#5FBC35" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-           
-          </div>
-          
-        </div> </Link>)
+          <div className="beer-order__item__data count"><p>{obtainNumberDrinks}</p><button>Ver detalle</button></div>
+          <div className="beer-order__item__data amount">${order.total.toFixed(2)}</div>
+        </div>)
         })}
       </Table>
       </div>
