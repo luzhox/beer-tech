@@ -1,20 +1,20 @@
 import { Order } from "@/interfaces/order";
 
-// const getOrders = async () => {
-//   return  await fetch('http://127.0.0.1:8000/api/v1/orders')
-//     .then((res) => res.json())
-//     .then((data) => {
-//       return data;
-//     });
-// }
+const getOrders = async () => {
+  return  await fetch('https://beer-backend-1.onrender.com/api/v1/orders')
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    });
+}
 
 export default async function Home() {
-  // const data = await getOrders();
+  const data = await getOrders();
   // console.log('data',data)
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col s items-center justify-between p-24">
       <h1>hola</h1>
-      {/* {data.map((order:Order) => (
+      {data.map((order:Order) => (
         <div key={order.id} className="flex flex-col items-center justify-between p-4 border border-gray-200 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold">{order.user_name}</h1>
           <p className="text-lg">{order.user_id}</p>
@@ -39,7 +39,7 @@ export default async function Home() {
 
 
         </div>
-      ))} */}
+      ))}
     </main>
   );
 }
