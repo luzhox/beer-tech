@@ -63,16 +63,16 @@ export default async function OrderDetail({params}:any) {
       <div className="dashboard-content">
       <div className="dashboard-cards ">
         <h3>Rondas</h3>
-        {data.rounds.map((round:any) => {
+        {data.rounds.map((round:any,index:number) => {
           return (
-            <div key={round.id} className="order-round__item">
+            <div key={index} className="order-round__item">
               <h4><strong>Fecha y hora de pedido:</strong> {formatDate(round.created,true)}</h4>
               <div className="order-round__item__products">
                 <h4><strong>Productos:</strong></h4>
                 <ul>
-                {round.items.map((item:any) => {
+                {round.items.map((item:any,index:number) => {
                   return (
-                    <li key={item.id} className="order-round__item__product">
+                    <li key={index} className="order-round__item__product">
                       <p>{item.name}({item.quantity})</p>
                     </li>
                   )
