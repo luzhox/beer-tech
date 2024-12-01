@@ -13,6 +13,7 @@ export default async function Home() {
   // console.log('data',data)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <h1>hola</h1>
       {/* {data.map((order:Order) => (
         <div key={order.id} className="flex flex-col items-center justify-between p-4 border border-gray-200 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold">{order.user_name}</h1>
