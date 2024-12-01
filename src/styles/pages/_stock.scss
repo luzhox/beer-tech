@@ -1,0 +1,56 @@
+.stock{
+  &__item{
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid #eff1f9;
+    justify-content: space-between;
+    align-items: center;
+    &__data{
+      width: 100%;
+      max-width: calc(100% / 6);
+      text-align: center;
+      &:first-child{
+        text-align: left;
+      }
+      &:last-child{
+        margin-right: 0px;
+        text-align: right;
+      }
+      &.user{
+        min-width: 120px;
+      }
+      &.round{
+        display: flex;
+        flex-flow: column;
+        button{
+          margin-top: 8px;
+          color: #538bcc;
+          text-decoration: underline;
+        }
+      }
+      &.status{
+  
+        p{
+          min-width: 80px;
+          padding: 6px;
+          border-radius: 8px;
+          background: rgb(236, 240, 255);
+        }
+        &.green{
+          p{
+            background: white;
+           border:1px solid rgb(79, 172, 79);
+            color: rgb(79, 172, 79);
+          }
+        }
+      }
+    }
+    
+    &:last-child{
+      border-bottom: none;
+    }
+    &:hover{
+      background: #eff1f9;
+    }
+  }
+}

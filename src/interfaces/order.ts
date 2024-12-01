@@ -3,7 +3,7 @@ interface OrderItem {
   id: number;
   name: string;
   price?: number;
-  quantity?: number;
+  quantity: number;
 }
 
 interface OrderRound {
@@ -19,5 +19,8 @@ export interface Order {
   discount: number;
   user_id: number;
   user_name: string;
+  items: OrderItem[];
   rounds:OrderRound[];
+  total: number;
+  subtotal: number;
 }

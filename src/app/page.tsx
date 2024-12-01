@@ -1,4 +1,12 @@
+import { Table } from "@/components/Table";
+import { headersOrder } from "@/data";
 import { Order } from "@/interfaces/order";
+import  { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Ordenes de bebidas - Beer System',
+  description: 'Ordenes de bebidas en Beer System',
+};
 
 const getOrders = async () => {
   return  await fetch('https://beer-backend-1.onrender.com/api/v1/orders')
@@ -8,38 +16,53 @@ const getOrders = async () => {
     });
 }
 
+
 export default async function Home() {
+
+
+
   const data = await getOrders();
-  // console.log('data',data)
   return (
-    <main className="flex min-h-screen flex-col s items-center justify-between p-24">
-      <h1>hola</h1>
-      {data.map((order:Order) => (
-        <div key={order.id} className="flex flex-col items-center justify-between p-4 border border-gray-200 rounded-lg shadow-md">
-          <h1 className="text-2xl font-bold">{order.user_name}</h1>
-          <p className="text-lg">{order.user_id}</p>
-          <p className="text-lg">{order.created}</p>
-          <p className="text-lg">{order.paid}</p>
-          <p className="text-lg">{order.taxes}</p>
-          <p className="text-lg">{order.discount}</p>
-          <div className="flex flex-col items-center justify-between p-4 border border-gray-200 rounded-lg shadow-md">
-            {order.rounds.map((round) => (
-              <div key={round.created} className="flex flex-col items-center justify-between p-4 border border-gray-200 rounded-lg shadow-md">
-                <p className="text-lg">{round.created}</p>
-                {round.items.map((item) => (
-                  <div key={item.id} className="flex flex-col items-center justify-between p-4 border border-gray-200 rounded-lg shadow-md">
-                    <p className="text-lg">{item.name}</p>
-                    <p className="text-lg">{item.price}</p>
-                    <p className="text-lg">{item.quantity}</p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+    <>
+  
+    <div className="orders">
+      <div className="dashboard-title">
+        <h1>Ordenes</h1>
+      </div>
+      <div className="dashboard-table beer-order">
+      <Table headers={headersOrder}>
+      {data.map((order:Order) =>{
+        const obtainNumberDrinks = order.items.reduce((acc, item) => {
+          return acc + item.quantity;
+        }
+        ,0);
+        const formatDateWithHours = new Date(order.created);
+ 
+        const obtainDayWithMonthAndYear = formatDateWithHours.toLocaleDateString('es-ES', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+        });
+        const obtainHour = formatDateWithHours.toLocaleTimeString('es-ES', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+        
 
-
-        </div>
-      ))}
-    </main>
+        return (
+        <div key={order.id+order.user_id} className="beer-order__item">
+          <div className="beer-order__item__data user">{order.user_name}</div>
+          <div className="beer-order__item__data round"><p>{order.rounds.length} rondas</p><button>Ver detalle</button></div>
+          <div className="beer-order__item__data created"><p>{obtainDayWithMonthAndYear}</p><p>{obtainHour}</p></div>
+          <div className={`beer-order__item__data status ${order.paid?'green':'default'}`}><p>{order.paid?'Pagado':'Pendiente'}</p></div>
+          <div className="beer-order__item__data count"><p>{obtainNumberDrinks}</p><button>Ver detalle</button></div>
+          <div className="beer-order__item__data amount">${order.total.toFixed(2)}</div>
+        </div>)
+        })}
+      </Table>
+      </div>
+      </div>
+      </>
   );
 }

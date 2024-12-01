@@ -1,0 +1,17 @@
+.props-dash{
+  background: white;
+  padding: 24px;
+  border-radius:12px;
+  box-shadow: 0 0 24px 12px rgba(183, 193, 255, 0.181);
+
+}
+.dashboard{
+  &-title{
+    @extend .props-dash;
+    font-style: 32px;
+    margin-bottom: 24px;
+  }
+  &-table{
+    @extend .props-dash;
+  }
+}

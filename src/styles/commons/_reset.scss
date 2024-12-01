@@ -6,4 +6,41 @@
   list-style: none;
   -webkit-appearance: none;
   appearance: none;
+  background: transparent;
+  border: 0px;
+  outline: 0;
+}
+button{
+  margin-top: 8px;
+  color: #538bcc;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.container{
+  display: flex;
+  height: 100vh;
+  &__nav{
+    width: 20%;
+    background: white;
+    padding: 24px;
+    text-align: center;
+    &__item {
+      a{
+        padding: 16px;
+        display: block;
+        text-align: left;
+        color: rgb(31, 31, 54);
+      }
+      &.active{
+        background: #eff1f9;
+        border-radius: 12px;
+      }
+    }
+  }
+  &__content{
+    background: #eff1f9;
+
+    flex: 1;
+    padding: 24px;
+  }
 }
