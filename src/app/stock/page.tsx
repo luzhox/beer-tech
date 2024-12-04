@@ -4,11 +4,15 @@ import useFetchGet from "@/hooks/useFetch";
 import { StockItem } from "@/interfaces/stock";
 import { formatDate } from "@/utils/format";
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const {fetchApi} = useFetchGet('https://beer-backend-1.onrender.com/api/v1/stock');
+const getStock = async () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {fetchApi} = useFetchGet('https://beer-backend-1.onrender.com/api/v1/stock');
+  return await fetchApi();
+}
 
 export default async function Home() {
-  const data = await fetchApi();
+  const data = await getStock();
+
 
   return (
     <div className="stock">
