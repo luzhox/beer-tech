@@ -1,5 +1,6 @@
 
 
+import useFetchGet from "@/hooks/useFetch";
 import { formatDate } from "@/utils/format";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
 };
 
 const getOrders = async (id: number) => {
-  return await fetch(`https://beer-backend-1.onrender.com/api/v1/orders/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      return data;
-    });
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {fetchApi} = useFetchGet(`https://beer-backend-1.onrender.com/api/v1/orders/${id}`);
+  return await fetchApi();
 }
+
+
 export default async function OrderDetail({ params }: any) {
   const { order } = params;
   const data = await getOrders(order);
