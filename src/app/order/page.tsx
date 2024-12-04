@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Table } from "@/components/Table";
 import { headersOrder } from "@/data";
+import useFormatDates from "@/hooks/useFormatDates";
 import { Order } from "@/interfaces/order";
 import { Metadata } from "next";
 
@@ -16,12 +18,10 @@ const getOrders = async () => {
     });
 }
 
-
 export default async function Home() {
   const data = await getOrders();
   return (
     <>
-
       <div className="orders">
         <div className="dashboard-title">
           <h1>Ordenes</h1>
@@ -33,18 +33,7 @@ export default async function Home() {
                 return acc + item.quantity;
               }
                 , 0);
-              const formatDateWithHours = new Date(order.created);
-
-              const obtainDayWithMonthAndYear = formatDateWithHours.toLocaleDateString('es-ES', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-              });
-              const obtainHour = formatDateWithHours.toLocaleTimeString('es-ES', {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-              });
+              const {obtainDayWithMonthAndYear,obtainHour} = useFormatDates(order.created);
 
               return (
                 <div key={order.id + order.user_id} className="beer-order__item">
