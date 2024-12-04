@@ -14,7 +14,6 @@ const getStocks = async () => {
 export default async function Home() {
   const data = await getStocks();
 
-
   return (
     <div className="stock">
     <div className="dashboard-title">
